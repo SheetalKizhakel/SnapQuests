@@ -1,9 +1,10 @@
 //nav tag defines a set of navigation links
-//Purpose-defines the main header of the website which should be present all the time
+//Purpose-defines the main header of the website which should be present all the time the your places one
 import React from "react";
 import MainHeader from './MainHeader';
 import './MainNavigation.css';
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import NavLinks from './NavLinks';
 function MainNavigation(props)
 {
     return (
@@ -18,7 +19,7 @@ function MainNavigation(props)
             <Link to="/">YourPlaces</Link>
         </h1>
         <nav>
-
+        <NavLinks/>
         </nav>
     </MainHeader>
     );
