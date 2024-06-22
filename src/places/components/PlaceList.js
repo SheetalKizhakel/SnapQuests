@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Card from '../../shared_components/UIElements/Card';
+import Card from '../../shared/components/UIElements/Card';
 import PlaceItem from './PlaceItem';
-import './PlaceList.css'
+import './PlaceList.css';
 
 const PlaceList = props => {
   if (props.items.length === 0) {
@@ -13,7 +13,7 @@ const PlaceList = props => {
           <button>Share Place</button>
         </Card>
       </div>
-    )
+    );
   }
 
   return (
