@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 
 import Card from '../../shared/components/UIElements/Card';
 import Button from '../../shared/components/FormElements/Button';
 import Modal from '../../shared/components/UIElements/Modal';
 import Map from '../../shared/components/UIElements/Map';
+import { AuthContext } from '../../shared/components/context/auth-context';
 import './PlaceItem.css';
 
 const PlaceItem = props => {
+  const auth=useContext(AuthContext);
   const [showMap, setShowMap] = useState(false);//state which checks whether map should be shown or not
   const [showConfirmModal,setShowConfirmModal]=useState(false); //state which decides whether deletion overlay should be shown or not
   const openMapHandler = () => setShowMap(true);
@@ -62,8 +64,9 @@ const PlaceItem = props => {
           </div>
           <div className="place-item__actions">
             <Button inverse onClick={openMapHandler}>VIEW ON MAP</Button>
-            <Button to={`/places/${props.id}`}>EDIT</Button>
-            <Button danger onClick={showDeleteWarningHandler}>DELETE</Button>
+            
+            {auth.isLoggedIn&&<Button to={`/places/${props.id}`}>EDIT</Button>}
+            {auth.isLoggedIn&&<Button danger onClick={showDeleteWarningHandler}>DELETE</Button>}
           </div>
         </Card>
       </li>
