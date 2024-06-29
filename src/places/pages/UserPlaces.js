@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import PlaceList from '../components/PlaceList';
-import Button from '../../shared/components/FormElements/Button';
 import { useHttpClient } from '../../shared/components/hooks/http-hook';
 
 const UserPlaces = () => {
