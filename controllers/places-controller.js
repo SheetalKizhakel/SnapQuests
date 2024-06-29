@@ -7,6 +7,7 @@ const getCoordsForAddress = require('../util/location');
 const mongoose=require('mongoose');
 const Place=require('../models/place')
 const User=require('../models/user')
+const fs=require('fs');
 
 //CRUD - READ FUNCTIONALITY
 
@@ -76,7 +77,8 @@ async function createPlace(req, res, next) {
         description:description,
         address:address,
         location:coordinates,
-        image:'https://www.esbnyc.com/sites/default/files/styles/on_single_feature/public/2019-10/home_banner-min.jpg?itok=OVtUHvyB',
+        image:
+        req.file.path,
         creator
     });
 
@@ -178,7 +180,7 @@ async function deletePlace(req, res, next) {
             return next(error);
         }
 
-
+        const imagePath=place.image;
         try {
             const sess = await mongoose.startSession();
             sess.startTransaction();
@@ -190,6 +192,9 @@ async function deletePlace(req, res, next) {
     catch (err) {
         return next(new HttpError('Something went wring Could not delete place', 500));
     }
+    fs.unlink(imagePath,err=>{
+        console.log(err);
+    });
     res.status(200).json({ message: 'Place is deleted' });
 }
 

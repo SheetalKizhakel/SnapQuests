@@ -42,7 +42,7 @@ async function signup(req, res, next) {
     const createdUser = new User({
         name,
         email,
-        image: 'https://www.esbnyc.com/sites/default/files/styles/on_single_feature/public/2019-10/home_banner-min.jpg?itok=OVtUHvyB',
+        image:req.file.path,//here the req.file.path will be uploads/images/filename
         password,
         places:[]//here we have to establish the connection between users and places tables in the same database
     });

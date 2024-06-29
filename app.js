@@ -1,12 +1,15 @@
 //our main entry file.same as server.js
 const express=require('express');
+const path=require('path')
 const bodyParser=require('body-parser');
 const mongoose=require('mongoose');
 const placesRoutes=require('./routes/places-routes')
 const userRoutes=require('./routes/users-routes')
 const HttpError=require('./models/http-error')
+const fs=require('fs')//this module allows us to interact with our files in the system
 const app=express();
 app.use(bodyParser.json());//will parse any incoming requests body and extract any JSON data which is in there,convert it to regular javascript data structures and then call next automatically
+app.use('/uploads/images',express.static(path.join('uploads','images')));
 app.use((req,res,next)=>//Middle ware required to get around CORS policy
 {
     res.setHeader('Access-Control-Allow-Origin','*');
@@ -21,6 +24,12 @@ app.use((req,res,next)=>{
     throw error;
 })
 app.use((error,req,res,next)=>{
+    if(req.file)
+        {
+            fs.unlink(req.file.path,err=>{
+                console.log(err);
+            });
+        }
     if(res.headerSent)
         {
             return next(error);
