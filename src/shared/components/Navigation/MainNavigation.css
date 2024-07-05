@@ -1,3 +1,4 @@
+/* Base styles for the menu button */
 .main-navigation__menu-btn {
   width: 3rem;
   height: 3rem;
@@ -6,8 +7,16 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   margin-right: 2rem;
   cursor: pointer;
+  padding: 0;
+  outline: none; /* Remove default outline */
+  transition: transform 0.3s ease; /* Add smooth transition */
+}
+
+.main-navigation__menu-btn:hover {
+  transform: scale(1.1); /* Slightly enlarge button on hover */
 }
 
 .main-navigation__menu-btn span {
@@ -15,25 +24,39 @@
   width: 3rem;
   height: 2.5px;
   background: white;
+  transition: background 0.3s ease, transform 0.3s ease; /* Smooth transition for background and transform */
 }
 
+/* Title styles */
 .main-navigation__title {
   color: white;
+  font-size: 3rem; /* Adjust font size */
+  font-weight: bold; /* Make title bold */
+  
 }
 
 .main-navigation__title a {
   text-decoration: none;
-  color: white;
+  color: inherit; /* Inherit color from parent */
+  transition: color 0.3s ease; /* Smooth color transition */
 }
 
+.main-navigation__title a:hover {
+  color: #f0e68c; /* Change color on hover */
+}
+
+/* Navigation styles */
 .main-navigation__header-nav {
   display: none;
 }
 
 .main-navigation__drawer-nav {
   height: 100%;
+  background: rgba(0, 0, 0, 0.8); /* Add semi-transparent background */
+  padding: 2rem; /* Add padding for better spacing */
 }
 
+/* Media query for larger screens */
 @media (min-width: 768px) {
   .main-navigation__menu-btn {
     display: none;

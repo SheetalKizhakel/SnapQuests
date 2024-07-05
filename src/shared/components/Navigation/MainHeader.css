@@ -1,23 +1,43 @@
+/* Main header styling */
 .main-header {
   width: 100%;
-  height: 4rem;
+  height: 5rem;
   display: flex;
   align-items: center;
   position: fixed;
   top: 0;
   left: 0;
-  background: #ff0055;
+  background: #b68d34;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.26);
   padding: 0 1rem;
   z-index: 5;
+  transition: background 0.3s ease; /* Add smooth background transition */
 }
 
+/* Adjust main content margin to avoid overlap with fixed header */
 main {
   margin-top: 5rem;
 }
 
+/* Media query for larger screens */
 @media (min-width: 768px) {
   .main-header {
     justify-content: space-between;
+  }
+
+  main {
+    margin-top: 6rem; /* Adjust margin for larger screens */
+  }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 767px) {
+  .main-header {
+    height: 3.5rem; /* Adjust header height for smaller screens */
+    padding: 0 0.5rem; /* Adjust padding for smaller screens */
+  }
+
+  main {
+    margin-top: 4.5rem; /* Adjust main margin for smaller screens */
   }
 }

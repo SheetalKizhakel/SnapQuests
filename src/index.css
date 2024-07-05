@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 * {
   box-sizing: border-box;
 }
@@ -10,7 +12,9 @@ html {
 
 body {
   margin: 0;
-  background: #4d4d4d;
+  background: #504040;
+  background-image: url("assets/camera-1130731_1920.jpg");
+  background-repeat: no-repeat;
 }
 
 .slide-in-left-enter {
