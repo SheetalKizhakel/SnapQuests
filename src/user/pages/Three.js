@@ -42,7 +42,7 @@ const Three = () => {
   }, []);
 
   return (
-    <section className='w-full h-screen relative'>
+    <section className='w-full h-screen p-0'>
       <Canvas className='w-2 h-2 bg-transparent' camera={{ near: 0.1, far: 1000 }}>
         <Suspense>
           <directionalLight />

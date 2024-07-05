@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from 'react';
-
+import Chat from '../components/chat';
 import UsersList from '../components/UsersList';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import { useHttpClient } from '../../shared/components/hooks/http-hook';
-import Three from '../pages/Three'
-
-
+import Three from '../pages/Three';
 
 const Users = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedUsers, setLoadedUsers] = useState();
 
   useEffect(() => {
-    let isMounted = true; // Track if the component is mounted
+    let isMounted = true;
 
     const fetchUsers = async () => {
       try {
         const responseData = await sendRequest('http://localhost:5000/api/users');
-        if (isMounted) { // Check if component is still mounted before updating state
+        if (isMounted) {
           setLoadedUsers(responseData.users);
         }
       } catch (err) {}
@@ -27,7 +25,7 @@ const Users = () => {
     fetchUsers();
 
     return () => {
-      isMounted = false; // Cleanup function to set isMounted to false
+      isMounted = false;
     };
   }, [sendRequest]);
 
@@ -40,8 +38,12 @@ const Users = () => {
         </div>
       )}
       {!isLoading && loadedUsers && <UsersList items={loadedUsers} />}
-      <Three/>
-    
+      <div className="flex flex-row h-screen">
+       
+       
+          <Chat />
+        
+      </div>
     </>
   );
 };
