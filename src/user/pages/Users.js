@@ -4,7 +4,7 @@ import UsersList from '../components/UsersList';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import { useHttpClient } from '../../shared/components/hooks/http-hook';
-import Three from '../pages/Three';
+import Three from './Three';
 
 const Users = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
